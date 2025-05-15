@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Privacy";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+
+            /* background-color: #f9f9f9; */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+
+
+        .privacy-container {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 50px 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            font-weight: 700;
+            color: #343a40;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .highlight {
+            color: #0d6efd;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container py-5">
+        <div class="privacy-section">
+            <h2 class="mb-4 text-center">Privacy Policy</h2>
+
+            <p><strong>Last Updated:</strong> May 9, 2025</p>
+
+            <p>At <span class="highlight">Work Finder</span>, we are committed to protecting your personal information and your right to privacy. Whether you are a worker or a work provider, your trust is our top priority.</p>
+
+            <h5 class="mt-4">🔐 Information We Collect</h5>
+            <p>We collect basic information such as your name, contact number, email address, location, age, experience, and profession — only what’s necessary to connect you with the right opportunities or services.</p>
+
+
+
+
+          @*   //corosel *@
+           @*  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="/lib/Images/11.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="/lib/Images/22.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/lib/Images/33.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div> *@
+            <!-- Place this where you want the carousel (e.g., in your View) -->
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/lib/Images/11.jpg" class="d-block w-100" alt="Slide 1"
+                             style="height: 500px; object-fit: cover; image-rendering: auto;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/lib/Images/22.jpg" class="d-block w-100" alt="Slide 2"
+                             style="height: 500px; object-fit: cover; image-rendering: auto;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/lib/Images/33.jpg" class="d-block w-100" alt="Slide 3"
+                             style="height: 500px; object-fit: cover; image-rendering: auto;">
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+
+
+            @* //
+ *@
+
+
+
+
+
+
+            <div style="min-height: 54vh " class="bg-light p-4">
+            <h5 class="mt-4">👥 How We Use Your Information</h5>
+            <ul>
+                <li>To match work providers with trusted workers based on needs.</li>
+                <li>To improve our services and enhance user experience.</li>
+                <li>To ensure safety and trust within the platform.</li>
+            </ul>
+
+            <h5 class="mt-4">🔒 Data Security</h5>
+            <p>Your data is stored securely using encryption and protected access layers. We do not sell, rent, or misuse your information. Your privacy is fully respected.</p>
+
+            <h5 class="mt-4">🤝 Our Mission</h5>
+            <p>In cities like Uttara and beyond, finding reliable household help and skilled professionals (like drivers, plumbers, and electricians) is becoming a challenge. Our platform bridges this gap — by helping you find <span class="highlight">trusted, verified, and experienced professionals</span>.</p>
+
+            <h5 class="mt-4">📩 Contact Us</h5>
+            <p>If you have any questions about this Privacy Policy or your personal data, feel free to reach out at <a href="mailto:victorzazzz220@gmail.com">workfinder@example.com</a>.</p>
+
+            <p class="mt-5 text-muted small">By using our platform, you agree to this privacy policy and our commitment to protecting your information.</p>
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>

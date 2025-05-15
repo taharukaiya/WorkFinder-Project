@@ -1,0 +1,60 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model WorkFinder.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@* <h2>Login</h2> *@
+
+@{
+    if (TempData["success"] != null)
+    {
+        // <p style="color:green">@TempData["Success"]</p>
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <strong>Success!</strong> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
+
+
+<div style="min-height: 60vh" class="py-5 m-auto p-3 bg-white rounded my-5 container">
+
+<div class="d-flex justify-content-center align-items-center mh-100">
+    <form asp-action="Login" method="post" class="w-100" style="max-width: 550px;">
+        <h3 class="text-center text-primary mb-4">Login</h3>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Role" class="form-label">Role</label>
+            <select asp-for="Role" class="form-select">
+                <option value="">-- Select Role --</option>
+                <option value="Admin">Admin</option>
+                <option value="Worker">Job seeker</option>
+                    <option value="WorkProvider">Employer</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="text-danger text-center mt-3">@ViewBag.Message</div>
+        }
+    </form>
+</div>
+
+</div>

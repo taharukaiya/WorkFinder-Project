@@ -1,0 +1,90 @@
+﻿
+
+@{
+    ViewData["Title"] = "Welcome to Work  Finder";
+}
+
+<div class="text-center">
+    @* <h1 class="display-4">Welcome to Work Finder</h1> *@
+    @* <p class="lead">Connecting job seekers with work providers efficiently and securely.</p> *@
+
+
+
+<style>
+    .banner {
+        position: relative;
+        width: 100%;
+        height: 470px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .banner-overlay h1 {
+            color: white;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+    .content-box {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        margin: 3rem auto;
+    }
+
+        .content-box h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin-bottom: 1rem;
+        }
+
+        .content-box p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+</style>
+
+<div class="banner">
+    <img src="/lib/Images/p1.jpeg" alt="Banner Image">
+    <div class="banner-overlay">
+        <h1>Hire or get hired in minutes with WorkFinder!</h1>
+    </div>
+</div>
+
+<div class="content-box text-center">
+    <h2 class="py-3">Empowering Connections, Enabling Opportunities</h2>
+    <p>
+        In today's dynamic workforce, bridging the gap between skilled individuals and meaningful opportunities is more important than ever. Our platform serves as a trusted link between dedicated workers and reliable work providers.
+    </p>
+    <p>
+        Whether you're seeking talent to grow your business or looking for job opportunities that match your skills, we offer the tools and support to make it happen—prioritizing reliability, quality, and growth.
+    </p>
+    <p>
+        Join us in building a future where access to work is efficient, fair, and empowering for all.
+    </p>
+</div>

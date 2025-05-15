@@ -1,0 +1,216 @@
+﻿@model WorkFinder.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div style="min-height: 60vh" class="py-5 m-auto p-3 bg-white rounded my-5 container">
+
+<h2 class="text-center mb-4">Register</h2>
+
+<form asp-action="Register" method="post" class="mx-auto" style="max-width: 600px;">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group mb-3">
+        <label asp-for="Role"></label>
+        <select asp-for="Role" class="form-control" id="roleSelect">
+            <option value="">Select Role</option>
+            <option value="Worker">Job Seeker</option>
+            <option value="WorkProvider">Employer</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Name">Full Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Gender"></label>
+        @* <input asp-for="Gender" class="form-control" /> *@
+        <select asp-for="Gender" class="form-control">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+    <label asp-for="Location"></label>
+    <select asp-for="Location" class="form-control">
+        <option value="">Select Location</option>
+        <option value="Barguna">Barguna</option>
+        <option value="Barishal">Barishal</option>
+        <option value="Bhola">Bhola</option>
+        <option value="Jhalokati">Jhalokati</option>
+        <option value="Patuakhali">Patuakhali</option>
+        <option value="Pirojpur">Pirojpur</option>
+        <option value="Bandarban">Bandarban</option>
+        <option value="Brahmanbaria">Brahmanbaria</option>
+        <option value="Chandpur">Chandpur</option>
+        <option value="Chattogram">Chattogram</option>
+        <option value="Cumilla">Cumilla</option>
+        <option value="Cox's Bazar">Cox's Bazar</option>
+        <option value="Feni">Feni</option>
+        <option value="Khagrachhari">Khagrachhari</option>
+        <option value="Lakshmipur">Lakshmipur</option>
+        <option value="Noakhali">Noakhali</option>
+        <option value="Rangamati">Rangamati</option>
+        <option value="Dhaka">Dhaka</option>
+        <option value="Faridpur">Faridpur</option>
+        <option value="Gazipur">Gazipur</option>
+        <option value="Gopalganj">Gopalganj</option>
+        <option value="Kishoreganj">Kishoreganj</option>
+        <option value="Madaripur">Madaripur</option>
+        <option value="Manikganj">Manikganj</option>
+        <option value="Munshiganj">Munshiganj</option>
+        <option value="Narayanganj">Narayanganj</option>
+        <option value="Narsingdi">Narsingdi</option>
+        <option value="Rajbari">Rajbari</option>
+        <option value="Shariatpur">Shariatpur</option>
+        <option value="Tangail">Tangail</option>
+        <option value="Bagerhat">Bagerhat</option>
+        <option value="Chuadanga">Chuadanga</option>
+        <option value="Jashore">Jashore</option>
+        <option value="Jhenaidah">Jhenaidah</option>
+        <option value="Khulna">Khulna</option>
+        <option value="Kushtia">Kushtia</option>
+        <option value="Magura">Magura</option>
+        <option value="Meherpur">Meherpur</option>
+        <option value="Narail">Narail</option>
+        <option value="Satkhira">Satkhira</option>
+        <option value="Jamalpur">Jamalpur</option>
+        <option value="Mymensingh">Mymensingh</option>
+        <option value="Netrokona">Netrokona</option>
+        <option value="Sherpur">Sherpur</option>
+        <option value="Bogura">Bogura</option>
+        <option value="Chapai Nawabganj">Chapai Nawabganj</option>
+        <option value="Joypurhat">Joypurhat</option>
+        <option value="Naogaon">Naogaon</option>
+        <option value="Natore">Natore</option>
+        <option value="Pabna">Pabna</option>
+        <option value="Rajshahi">Rajshahi</option>
+        <option value="Sirajganj">Sirajganj</option>
+        <option value="Dinajpur">Dinajpur</option>
+        <option value="Gaibandha">Gaibandha</option>
+        <option value="Kurigram">Kurigram</option>
+        <option value="Lalmonirhat">Lalmonirhat</option>
+        <option value="Nilphamari">Nilphamari</option>
+        <option value="Panchagarh">Panchagarh</option>
+        <option value="Rangpur">Rangpur</option>
+        <option value="Thakurgaon">Thakurgaon</option>
+        <option value="Habiganj">Habiganj</option>
+        <option value="Moulvibazar">Moulvibazar</option>
+        <option value="Sunamganj">Sunamganj</option>
+        <option value="Sylhet">Sylhet</option>
+    </select>
+    <span asp-validation-for="Location" class="text-danger"></span>
+</div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ContactNumber"></label>
+        <input asp-for="ContactNumber" class="form-control" type="password" />
+        <span asp-validation-for="ContactNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div
+
+     
+
+    <!-- Worker-specific section -->
+    <div id="workerFields" style="display: none;">
+        <div class="form-group mb-3">
+            <label asp-for="Age"></label>
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Salary">Expected Salary Per Day (BDT)</label>
+            <input asp-for="Salary" class="form-control" />
+            <span asp-validation-for="Salary" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+    <label asp-for="Experienced">Service Category</label>
+    <select asp-for="Experienced" class="form-control">
+        <option value="">Select Your Service Category</option>
+        <option value="Maid">Maid</option>
+        <option value="Driver">Driver</option>
+        <option value="Plumber">Plumber</option>
+        <option value="Electrician">Electrician</option>
+        <option value="Cleaner">Cleaner</option>
+        <option value="Cook">Cook</option>
+        <option value="Security Guard">Security Guard</option>
+        <option value="Gardener">Gardener</option>
+        <option value="Babysitter">Babysitter</option>
+    </select>
+    <span asp-validation-for="Experienced" class="text-danger"></span>
+</div>
+    </div>
+
+    <!-- WorkProvider-specific section -->
+    <div id="providerFields" style="display: none;">
+        <div class="form-group mb-3">
+            <label asp-for="WorkerNeed">Service Category</label>
+            <input asp-for="WorkerNeed" class="form-control" />
+            <select asp-for="WorkerNeed" class="form-control">
+        <option value="">Select The Service Category</option>
+        <option value="Maid">Maid</option>
+        <option value="Driver">Driver</option>
+        <option value="Plumber">Plumber</option>
+        <option value="Electrician">Electrician</option>
+        <option value="Cleaner">Cleaner</option>
+        <option value="Cook">Cook</option>
+        <option value="Security Guard">Security Guard</option>
+        <option value="Gardener">Gardener</option>
+        <option value="Babysitter">Babysitter</option>
+    </select>
+            <span asp-validation-for="WorkerNeed" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div id="providerFields" style="display: none;">
+        <div class="form-group mb-3">
+            <label asp-for="ContactNumber"></label>
+            <input asp-for="ContactNumber" class="form-control" />
+            <span asp-validation-for="ContactNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary w-100">Register</button>
+</form>
+
+<div class="d-flex justify-content-center mt-3">
+    Already have an account? <a href="/Account/Login">Log in here</a>
+</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function toggleRoleFields() {
+            const role = document.getElementById("roleSelect").value;
+            document.getElementById("workerFields").style.display = role === "Worker" ? "block" : "none";
+            document.getElementById("providerFields").style.display = role === "WorkProvider" ? "block" : "none";
+        }
+
+        document.getElementById("roleSelect").addEventListener("change", toggleRoleFields);
+        toggleRoleFields(); // Initial call
+    </script>
+}

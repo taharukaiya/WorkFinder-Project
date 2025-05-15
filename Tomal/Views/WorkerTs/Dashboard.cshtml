@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@{
+    ViewData["Title"] = "Worker Dashboard";
+   
+}
+<div style="min-height: 54vh" class="pt-5 m-auto ">
+@{
+    var userName = Context.Session.GetString("UserName");
+}
+
+@if (!string.IsNullOrEmpty(userName))
+{
+    <h3>Welcome, @userName</h3>
+}
+
+<p>This is your dashboard. View jobs, update profile, and manage your availability.</p>
+
+</div>

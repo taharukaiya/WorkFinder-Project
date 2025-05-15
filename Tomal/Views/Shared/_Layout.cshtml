@@ -1,0 +1,245 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+
+
+ <style>
+           
+        *,html, body {
+            margin: 0;
+            padding: 0;
+			font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+
+            footer a {
+                color: #ccc;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    color: #fff;
+                    text-decoration: underline;
+                }
+
+     /* Nav link hover effect */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #0d6efd;
+    color: #fff !important;
+}
+
+/* Logout button hover */
+.navbar .btn-link.nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+    color: #dc3545;
+    border-radius: 5px;
+}
+
+.navbar .btn-link.nav-link:hover {
+    background-color: #dc3545;
+    color: #fff !important;
+}
+
+/* Make navbar sticky */
+.sticky-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+ </style>
+
+
+
+</head>
+<body>
+    <header class="container">
+        <div class=" navbar navbar-expand-lg navbar-light bg-white border-bottom py-3 sticky-navbar">
+
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold text-primary" asp-area="" asp-controller="Home" asp-action="Index">
+                    Work Finder
+                </a>
+                
+
+                 
+                @{
+                    var userRole = Context.Session.GetString("UserRole");
+                }
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                       
+
+                        @if (userRole == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="WorkProviders" asp-action="Index">Employers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="WorkerTs" asp-action="Index">Job Seekers</a>
+                            </li>
+                        }
+
+                        @if (string.IsNullOrEmpty(userRole))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        }
+
+                      
+
+                        @if (userRole == "Worker")
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Profile">My Profile</a></li>
+                            @* <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Dashboard">Dashboard</a></li> *@
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Index">WorkProvider</a></li>
+                        }
+                        else if (userRole == "WorkProvider")
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wProviderEditProfile" asp-action="Profile">My Profile</a></li>
+                            @* <li class="nav-item"><a class="nav-link text-dark" asp-controller="wProviderEditProfile" asp-action="Dashboard">Dashboard</a></li> *@
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wProviderEditProfile" asp-action="Index">Job Seekers</a></li>
+                        }
+
+
+                        @if (!string.IsNullOrEmpty(userRole))
+                        {
+                            <li class="nav-item">
+                                <form asp-action="Logout" asp-controller="Account" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-link nav-link text-danger">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        @* <li class="nav-item"> *@
+                        @*     <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
+                        @* </li> *@
+
+                    </ul>
+                    @{
+                        var userName = Context.Session.GetString("UserName");
+                    }
+
+
+                    @if (!string.IsNullOrEmpty(userName))
+                    {
+                        <span class="navbar-text fw-semibold text-primary">
+                            Welcome, @userName
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+
+    <div class="w-100">
+        <main role="main" class="pb-3">
+
+
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+        </main>
+    </div>
+    <!-- FOOTER -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Worker Finder connects people who need help with skilled workers they can trust—drivers, plumbers, housekeepers, and more.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Find a Worker</a></li>
+                        <li><a href="#">Become a Helper</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Info</h5>
+                    <p>Email: workerfinder@gmail.com</p>
+                    <p>Phone: +8801311211685</p>
+                    <p>Address: Sector 3 Uttara, Dhaka, Bangladesh</p>
+                </div>
+            </div>
+            <hr class="my-4" />
+            <p class="text-center mb-0">&copy; 2025 Worker Finder. All rights reserved.</p>
+        </div>
+    </footer>
+   @* carusel *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

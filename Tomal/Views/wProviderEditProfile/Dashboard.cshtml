@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "WorkProvider Dashboard";
+
+}
+@{
+    var userName = Context.Session.GetString("UserName");
+}
+<div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+
+<div style="min-height: 57vh" class="pt-5 m-auto px-xxl-5 ">
+@if (!string.IsNullOrEmpty(userName))
+{
+    <h3>Welcome, @userName</h3>
+}
+
+
+    <p>This is your dashboard. Post jobs and manage your worker requests.</p>
+
+</div>
+</div>
