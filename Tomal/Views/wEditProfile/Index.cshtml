@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #white;
+            background-color: #fff;
         }
 
         .sidebar {
@@ -47,6 +47,12 @@
                 object-fit: contain;
                 margin-bottom: 15px;
             }
+
+        /* Custom scrollable dropdown */
+        #locationDropdown .card {
+            max-height: 350px; /* Adjust height as needed */
+            overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -54,75 +60,77 @@
     <div class="container my-5">
         <h2 class="text-center mb-5 fw-bold">Available Employers</h2>
 
-        @* SortByLocation *@
-        <div class="my-5 w-25 flex-column">
-            <select class="form-control">
-                <option value="">Sort By Location</option>
-                <option value="Barguna">Barguna</option>
-                <option value="Barishal">Barishal</option>
-                <option value="Bhola">Bhola</option>
-                <option value="Jhalokati">Jhalokati</option>
-                <option value="Patuakhali">Patuakhali</option>
-                <option value="Pirojpur">Pirojpur</option>
-                <option value="Bandarban">Bandarban</option>
-                <option value="Brahmanbaria">Brahmanbaria</option>
-                <option value="Chandpur">Chandpur</option>
-                <option value="Chattogram">Chattogram</option>
-                <option value="Cumilla">Cumilla</option>
-                <option value="Cox's Bazar">Cox's Bazar</option>
-                <option value="Feni">Feni</option>
-                <option value="Khagrachhari">Khagrachhari</option>
-                <option value="Lakshmipur">Lakshmipur</option>
-                <option value="Noakhali">Noakhali</option>
-                <option value="Rangamati">Rangamati</option>
-                <option value="Dhaka">Dhaka</option>
-                <option value="Faridpur">Faridpur</option>
-                <option value="Gazipur">Gazipur</option>
-                <option value="Gopalganj">Gopalganj</option>
-                <option value="Kishoreganj">Kishoreganj</option>
-                <option value="Madaripur">Madaripur</option>
-                <option value="Manikganj">Manikganj</option>
-                <option value="Munshiganj">Munshiganj</option>
-                <option value="Narayanganj">Narayanganj</option>
-                <option value="Narsingdi">Narsingdi</option>
-                <option value="Rajbari">Rajbari</option>
-                <option value="Shariatpur">Shariatpur</option>
-                <option value="Tangail">Tangail</option>
-                <option value="Bagerhat">Bagerhat</option>
-                <option value="Chuadanga">Chuadanga</option>
-                <option value="Jashore">Jashore</option>
-                <option value="Jhenaidah">Jhenaidah</option>
-                <option value="Khulna">Khulna</option>
-                <option value="Kushtia">Kushtia</option>
-                <option value="Magura">Magura</option>
-                <option value="Meherpur">Meherpur</option>
-                <option value="Narail">Narail</option>
-                <option value="Satkhira">Satkhira</option>
-                <option value="Jamalpur">Jamalpur</option>
-                <option value="Mymensingh">Mymensingh</option>
-                <option value="Netrokona">Netrokona</option>
-                <option value="Sherpur">Sherpur</option>
-                <option value="Bogura">Bogura</option>
-                <option value="Chapai Nawabganj">Chapai Nawabganj</option>
-                <option value="Joypurhat">Joypurhat</option>
-                <option value="Naogaon">Naogaon</option>
-                <option value="Natore">Natore</option>
-                <option value="Pabna">Pabna</option>
-                <option value="Rajshahi">Rajshahi</option>
-                <option value="Sirajganj">Sirajganj</option>
-                <option value="Dinajpur">Dinajpur</option>
-                <option value="Gaibandha">Gaibandha</option>
-                <option value="Kurigram">Kurigram</option>
-                <option value="Lalmonirhat">Lalmonirhat</option>
-                <option value="Nilphamari">Nilphamari</option>
-                <option value="Panchagarh">Panchagarh</option>
-                <option value="Rangpur">Rangpur</option>
-                <option value="Thakurgaon">Thakurgaon</option>
-                <option value="Habiganj">Habiganj</option>
-                <option value="Moulvibazar">Moulvibazar</option>
-                <option value="Sunamganj">Sunamganj</option>
-                <option value="Sylhet">Sylhet</option>
-            </select>
+        @* FilterByLocation *@
+        <div style="width:23%" class="my-5 flex-column position-relative">
+            <button id="filterLocationBtn" type="button" class="btn btn-outline-secondary w-100">Filter By Location</button>
+            <div id="locationDropdown" class="position-absolute mt-2 w-100" style="display:none; z-index: 1000;">
+                <div class="card p-2">
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "" })' class='btn btn-outline-secondary mb-2'>All</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Bagerhat" })' class='btn btn-outline-secondary mb-2'>Bagerhat</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Bandarban" })' class='btn btn-outline-secondary mb-2'>Bandarban</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Barguna" })' class='btn btn-outline-secondary mb-2'>Barguna</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Barishal" })' class='btn btn-outline-secondary mb-2'>Barishal</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Bhola" })' class='btn btn-outline-secondary mb-2'>Bhola</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Bogura" })' class='btn btn-outline-secondary mb-2'>Bogura</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Brahmanbaria" })' class='btn btn-outline-secondary mb-2'>Brahmanbaria</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Chandpur" })' class='btn btn-outline-secondary mb-2'>Chandpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Chattogram" })' class='btn btn-outline-secondary mb-2'>Chattogram</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Chuadanga" })' class='btn btn-outline-secondary mb-2'>Chuadanga</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Cox\'s Bazar" })' class='btn btn-outline-secondary mb-2'>Cox's Bazar</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Cumilla" })' class='btn btn-outline-secondary mb-2'>Cumilla</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Dhaka" })' class='btn btn-outline-secondary mb-2'>Dhaka</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Dinajpur" })' class='btn btn-outline-secondary mb-2'>Dinajpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Faridpur" })' class='btn btn-outline-secondary mb-2'>Faridpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Feni" })' class='btn btn-outline-secondary mb-2'>Feni</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Gaibandha" })' class='btn btn-outline-secondary mb-2'>Gaibandha</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Gazipur" })' class='btn btn-outline-secondary mb-2'>Gazipur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Gopalganj" })' class='btn btn-outline-secondary mb-2'>Gopalganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Habiganj" })' class='btn btn-outline-secondary mb-2'>Habiganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Jamalpur" })' class='btn btn-outline-secondary mb-2'>Jamalpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Jashore" })' class='btn btn-outline-secondary mb-2'>Jashore</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Jhalokati" })' class='btn btn-outline-secondary mb-2'>Jhalokati</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Jhenaidah" })' class='btn btn-outline-secondary mb-2'>Jhenaidah</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Joypurhat" })' class='btn btn-outline-secondary mb-2'>Joypurhat</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Khagrachhari" })' class='btn btn-outline-secondary mb-2'>Khagrachhari</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Khulna" })' class='btn btn-outline-secondary mb-2'>Khulna</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Kishoreganj" })' class='btn btn-outline-secondary mb-2'>Kishoreganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Kurigram" })' class='btn btn-outline-secondary mb-2'>Kurigram</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Kushtia" })' class='btn btn-outline-secondary mb-2'>Kushtia</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Lakshmipur" })' class='btn btn-outline-secondary mb-2'>Lakshmipur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Lalmonirhat" })' class='btn btn-outline-secondary mb-2'>Lalmonirhat</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Madaripur" })' class='btn btn-outline-secondary mb-2'>Madaripur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Magura" })' class='btn btn-outline-secondary mb-2'>Magura</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Manikganj" })' class='btn btn-outline-secondary mb-2'>Manikganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Meherpur" })' class='btn btn-outline-secondary mb-2'>Meherpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Moulvibazar" })' class='btn btn-outline-secondary mb-2'>Moulvibazar</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Munshiganj" })' class='btn btn-outline-secondary mb-2'>Munshiganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Mymensingh" })' class='btn btn-outline-secondary mb-2'>Mymensingh</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Naogaon" })' class='btn btn-outline-secondary mb-2'>Naogaon</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Narail" })' class='btn btn-outline-secondary mb-2'>Narail</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Narayanganj" })' class='btn btn-outline-secondary mb-2'>Narayanganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Narsingdi" })' class='btn btn-outline-secondary mb-2'>Narsingdi</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Natore" })' class='btn btn-outline-secondary mb-2'>Natore</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Netrokona" })' class='btn btn-outline-secondary mb-2'>Netrokona</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Nilphamari" })' class='btn btn-outline-secondary mb-2'>Nilphamari</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Noakhali" })' class='btn btn-outline-secondary mb-2'>Noakhali</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Pabna" })' class='btn btn-outline-secondary mb-2'>Pabna</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Panchagarh" })' class='btn btn-outline-secondary mb-2'>Panchagarh</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Patuakhali" })' class='btn btn-outline-secondary mb-2'>Patuakhali</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Pirojpur" })' class='btn btn-outline-secondary mb-2'>Pirojpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Rajbari" })' class='btn btn-outline-secondary mb-2'>Rajbari</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Rajshahi" })' class='btn btn-outline-secondary mb-2'>Rajshahi</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Rangamati" })' class='btn btn-outline-secondary mb-2'>Rangamati</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Rangpur" })' class='btn btn-outline-secondary mb-2'>Rangpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Satkhira" })' class='btn btn-outline-secondary mb-2'>Satkhira</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Shariatpur" })' class='btn btn-outline-secondary mb-2'>Shariatpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Sherpur" })' class='btn btn-outline-secondary mb-2'>Sherpur</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Sirajganj" })' class='btn btn-outline-secondary mb-2'>Sirajganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Sunamganj" })' class='btn btn-outline-secondary mb-2'>Sunamganj</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Sylhet" })' class='btn btn-outline-secondary mb-2'>Sylhet</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Tangail" })' class='btn btn-outline-secondary mb-2'>Tangail</a>
+                    <a href='@Url.Action("Index", "wEditProfile", new { profession = Context.Request.Query["profession"], location = "Thakurgaon" })' class='btn btn-outline-secondary mb-2'>Thakurgaon</a>
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -166,7 +174,7 @@
                     @if (!Model.Any())
                     {
                         <div class="col-12 text-center text-muted">
-                            <p>No workers found for this profession.</p>
+                            <p>No User Found!</p>
                         </div>
                     }
                 </div>
@@ -175,7 +183,18 @@
     </div>
 
 
+
+    <script>
+        // JS for Filter By Location Dropdown
+        const filterBtn = document.getElementById("filterLocationBtn");
+        const dropdown = document.getElementById("locationDropdown");
+        document.addEventListener("click", function (e) {
+            if (filterBtn.contains(e.target)) {
+                dropdown.style.display = (dropdown.style.display === "none" || dropdown.style.display === "") ? "block" : "none";
+            } else if (!dropdown.contains(e.target)) {
+                dropdown.style.display = "none";
+            }
+        });
+    </script>
 </body>
-
-
-
+</html>

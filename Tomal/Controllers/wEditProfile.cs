@@ -23,11 +23,9 @@ public class wEditProfileController : Controller
         return View(workProvider); // send to view
     }
 
-
-    // for linq adding this
-
+    //Tomal linq new
     [HttpGet]
-    public async Task<IActionResult> Index(string? profession)
+    public async Task<IActionResult> Index(string? profession, string? location)
     {
         var workprovider = from w in _context.WorkProviders select w;
 
@@ -36,8 +34,32 @@ public class wEditProfileController : Controller
             workprovider = workprovider.Where(w => w.WorkerNeed.ToLower() == profession.ToLower());
         }
 
+        if (!string.IsNullOrEmpty(location))
+        {
+            workprovider = workprovider.Where(w => w.Location.ToLower() == location.ToLower());
+        }
+
         return View(await workprovider.ToListAsync());
     }
+
+
+    //Tomal linq new ends
+
+
+    // for linq adding this
+
+    //[HttpGet]
+    //public async Task<IActionResult> Index(string? profession)
+    //{
+    //    var workprovider = from w in _context.WorkProviders select w;
+
+    //    if (!string.IsNullOrEmpty(profession))
+    //    {
+    //        workprovider = workprovider.Where(w => w.WorkerNeed.ToLower() == profession.ToLower());
+    //    }
+
+    //    return View(await workprovider.ToListAsync());
+    //}
 
     // ends here linq
 

@@ -22,10 +22,9 @@ public class wProviderEditProfileController : Controller
     }
 
 
-    // for linq adding this
-
+    //linq tomal 
     [HttpGet]
-    public async Task<IActionResult> Index(string? profession)
+    public async Task<IActionResult> Index(string? profession, string? location)
     {
         var workers = from w in _context.WorkerTs select w;
 
@@ -34,8 +33,31 @@ public class wProviderEditProfileController : Controller
             workers = workers.Where(w => w.Experienced.ToLower() == profession.ToLower());
         }
 
+        if (!string.IsNullOrEmpty(location))
+        {
+            workers = workers.Where(w => w.Location.ToLower() == location.ToLower());
+        }
+
         return View(await workers.ToListAsync());
     }
+
+
+    // linq tomal ends
+
+    // for linq adding this
+
+    //[HttpGet]
+    //public async Task<IActionResult> Index(string? profession)
+    //{
+    //    var workers = from w in _context.WorkerTs select w;
+
+    //    if (!string.IsNullOrEmpty(profession))
+    //    {
+    //        workers = workers.Where(w => w.Experienced.ToLower() == profession.ToLower());
+    //    }
+
+    //    return View(await workers.ToListAsync());
+    //}
 
     // ends here linq
 
