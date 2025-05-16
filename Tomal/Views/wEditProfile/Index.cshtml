@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WorkFinder.Models.WorkProvider>
 
 @{
-    ViewBag.Title = "Available Work Providers";
+    ViewBag.Title = "Available Employers";
 }
 
 
@@ -50,17 +50,23 @@
 
 <body>
     <div class="container my-5">
-        <h2 class="text-center mb-5 fw-bold">Available Workers</h2>
+        <h2 class="text-center mb-5 fw-bold">Available Employers</h2>
         <div class="row">
             <!-- Sidebar -->
             <div class="col-md-3 mb-4">
                 <div class="sidebar d-flex flex-column">
                     <a href="@Url.Action("Index", "wEditProfile", new { profession = "" })" class="btn btn-light mb-2">All</a>
+                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Maid" })" class="btn btn-light mb-2">Maid</a>
                     <a href="@Url.Action("Index", "wEditProfile", new { profession = "Driver" })" class="btn btn-light mb-2">Driver</a>
-                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Cook" })" class="btn btn-light mb-2">Cook</a>
+                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Plumber" })" class="btn btn-light mb-2">Plumber</a>
+                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Electrician" })" class="btn btn-light mb-2">Electrician</a>
                     <a href="@Url.Action("Index", "wEditProfile", new { profession = "Cleaner" })" class="btn btn-light mb-2">Cleaner</a>
-                    <!-- Add more as needed -->
+                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Cook" })" class="btn btn-light mb-2">Cook</a>
+                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Security Guard" })" class="btn btn-light mb-2">Security Guard</a>
+                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Gardener" })" class="btn btn-light mb-2">Gardener</a>
+                    <a href="@Url.Action("Index", "wEditProfile", new { profession = "Babysitter" })" class="btn btn-light mb-2">Babysitter</a>
                 </div>
+
             </div>
 
             <!-- Worker Cards Area (example) -->
@@ -96,20 +102,6 @@
 
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

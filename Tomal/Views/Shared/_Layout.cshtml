@@ -123,10 +123,10 @@
                         @if (userRole == "Admin")
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="WorkProviders" asp-action="Index">Employers</a>
+                                <a class="nav-link text-dark" asp-controller="WorkProviders" asp-action="Index">Employers List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="WorkerTs" asp-action="Index">Job Seekers</a>
+                                <a class="nav-link text-dark" asp-controller="WorkerTs" asp-action="Index">Job Seekers List</a>
                             </li>
                         }
 
@@ -144,15 +144,15 @@
 
                         @if (userRole == "Worker")
                         {
-                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Profile">My Profile</a></li>
                             @* <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Dashboard">Dashboard</a></li> *@
-                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Index">WorkProvider</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Index">Employers</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wEditProfile" asp-action="Profile">Profile</a></li>
                         }
                         else if (userRole == "WorkProvider")
                         {
-                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wProviderEditProfile" asp-action="Profile">My Profile</a></li>
                             @* <li class="nav-item"><a class="nav-link text-dark" asp-controller="wProviderEditProfile" asp-action="Dashboard">Dashboard</a></li> *@
                             <li class="nav-item"><a class="nav-link text-dark" asp-controller="wProviderEditProfile" asp-action="Index">Job Seekers</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="wProviderEditProfile" asp-action="Profile">Profile</a></li>
                         }
 
 

@@ -1,94 +1,18 @@
-﻿@* @model IEnumerable<WorkFinder.Models.WorkProvider>
+﻿@model IEnumerable<WorkFinder.Models.WorkProvider>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employer";
 }
 
-<div style="min-height: 60vh" class="pt-5 m-auto ">
-<h1>All Work Providers Informations</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkerNeed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactNumber)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkerNeed)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactNumber)
-                </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</div> *@
-
-                @model IEnumerable<WorkFinder.Models.WorkProvider>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<div class="container py-5" style="min-height: 60vh;">
-    <h2 class="text-center text-primary fw-bold mb-4">All Work Providers Information</h2>
-
-    <div class="text-end mb-3">
-        <a asp-action="Create" class="btn btn-success">+ Add New Work Provider</a>
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-primary">All Employers Information</h1>
+        <a asp-action="Create" class="btn btn-success mt-3">Create New</a>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered align-middle shadow-sm">
-            <thead class="table-primary text-center">
+    <div class="table-responsive shadow rounded">
+        <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-dark">
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Name)</th>
                     <th>@Html.DisplayNameFor(model => model.Gender)</th>
@@ -100,7 +24,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody class="text-center">
+            <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
@@ -112,9 +36,11 @@
                         <td>@Html.DisplayFor(modelItem => item.WorkerNeed)</td>
                         <td>@Html.DisplayFor(modelItem => item.ContactNumber)</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning me-1">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info me-1">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                            <div class="btn-group" role="group">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning m-2 px-3">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white m-2 px-3">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger m-2 px-3">Delete</a>
+                            </div>
                         </td>
                     </tr>
                 }

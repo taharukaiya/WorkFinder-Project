@@ -52,20 +52,25 @@
 
 
 <div class="container my-5">
-    <h2 class="text-center mb-5 fw-bold">Available Workers</h2>
+    <h2 class="text-center mb-5 fw-bold">Available Job Seekers</h2>
     <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3 mb-4">
             <div class="sidebar d-flex flex-column">
                 <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "" })" class="btn btn-light mb-2">All</a>
+                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Maid" })" class="btn btn-light mb-2">Maid</a>
                 <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Driver" })" class="btn btn-light mb-2">Driver</a>
-                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Cook" })" class="btn btn-light mb-2">Cook</a>
+                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Plumber" })" class="btn btn-light mb-2">Plumber</a>
+                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Electrician" })" class="btn btn-light mb-2">Electrician</a>
                 <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Cleaner" })" class="btn btn-light mb-2">Cleaner</a>
-                <!-- Add more as needed -->
+                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Cook" })" class="btn btn-light mb-2">Cook</a>
+                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Security Guard" })" class="btn btn-light mb-2">Security Guard</a>
+                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Gardener" })" class="btn btn-light mb-2">Gardener</a>
+                <a href="@Url.Action("Index", "wProviderEditProfile", new { profession = "Babysitter" })" class="btn btn-light mb-2">Babysitter</a>
             </div>
         </div>
 
-        <!-- Worker Cards Area (example) -->
+        <!-- Worker Cards Area  -->
         <div class="col-md-9">
             <div class="row">
                 @foreach (var Worker in Model)
